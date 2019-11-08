@@ -7,6 +7,11 @@ dotenv.config({ path: "./config.env" });
 
 var app = express();
 
+// Dev logging
+if (process.env.NODE_ENV === "development") {
+  app.use(morgan("dev"));
+}
+
 //Profile routes
 app.use("/api/v1/profile", require("./routes/profile"));
 
