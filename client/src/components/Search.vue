@@ -1,13 +1,13 @@
 <template>
   <section class="search">
     <h1>Track Player Stats</h1>
-    <form v.on:submit.prevent="onSubmit">
+    <form v-on:submit.prevent="onSubmit">
       <div class="form-group">
         <label for="platform">Platform</label>
         <select name="platform" id="platform" v-model="platform">
-          <option value="psn"></option>
-          <option value="xbl"></option>
-          <option value="Origin"></option>
+          <option value="psn">Playstation</option>
+          <option value="xbl">Xbox Live</option>
+          <option value="Origin">Origin</option>
         </select>
       </div>
       <div class="class-group">
@@ -30,7 +30,7 @@
 <script>
 export default {
   name: "Search",
-  date() {
+  data() {
     return {
       platform: "xbl",
       gamertag: ""
@@ -42,9 +42,12 @@ export default {
   methods: {
     onSubmit() {
       if (!this.gamertag) {
-        console.log("enter gamertag");
+        this.$toasted.show("Please enter a gamertag", {
+          duration: 3000,
+          icon: "exclamation-circle"
+        });
       } else {
-        console.log("Will redirect");
+        this.$router.push(`/profile/${this.platform}/${this.gamertag}`);
       }
     }
   }
