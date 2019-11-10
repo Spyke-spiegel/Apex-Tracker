@@ -10,12 +10,31 @@
           <option value="Origin"></option>
         </select>
       </div>
+      <div class="class-group">
+        <label for="gamertag">Gamertag</label>
+        <input
+          type="text"
+          name="text"
+          v-model="gamertag"
+          placeholder="Origin ID, Xbox live gamertag or PSN ID"
+          id="gamertag"
+        />
+      </div>
+      <div class="form-group">
+        <input type="submit" value="submit" class="btn" />
+      </div>
     </form>
   </section>
 </template>
 
 <script>
-export default {};
+export default {
+    name: 'Search',
+    date() {
+        platform: "xbl",
+        gamertag: ""
+    }
+};
 </script>
 
 <style scoped>
