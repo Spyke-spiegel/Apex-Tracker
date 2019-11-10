@@ -29,11 +29,25 @@
 
 <script>
 export default {
-    name: 'Search',
-    date() {
-        platform: "xbl",
-        gamertag: ""
+  name: "Search",
+  date() {
+    return {
+      platform: "xbl",
+      gamertag: ""
+    };
+  },
+  beforeCreate() {
+    document.body.className = "body-bg-image";
+  },
+  methods: {
+    onSubmit() {
+      if (!this.gamertag) {
+        console.log("enter gamertag");
+      } else {
+        console.log("Will redirect");
+      }
     }
+  }
 };
 </script>
 

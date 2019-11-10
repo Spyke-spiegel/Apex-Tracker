@@ -7,7 +7,7 @@
 <script>
 export default {
   name: "Header",
-  date() {
+  data() {
     return {
       image: require("@/assets/logo.png")
     };
@@ -19,8 +19,7 @@ export default {
 img {
   width: 300px;
 }
-
-@media (max-width: 700px;) {
+@media (max-width: 700px) {
   img {
     display: block;
     margin: auto;
