@@ -3,6 +3,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "Profile",
   data() {
@@ -14,6 +16,21 @@ export default {
   },
   beforeCreate() {
     document.body.className = "body-bg-no-image";
+  },
+  async created() {
+    this.loading = true;
+    try {
+      const res = await axios.get(
+        `/api/v1/profile/${this.$route.params.platform}/${this.$route.params.gamertag}`
+      );
+
+      this.profileData = res.data.data;
+      window.console.log(this.profileData);
+      this.loading = false;
+    } catch (err) {
+      this.loading = false;
+      this.error = err.response.data.message;
+    }
   }
 };
 </script>
